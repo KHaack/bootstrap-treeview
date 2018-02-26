@@ -1,156 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
-    
-    <packaging>jar</packaging>
-    <groupId>org.webjars</groupId>
-    <artifactId>bootstrap-treeview</artifactId>
-    <version>1.2.0-sask</version>
-    <name>Bootstrap Treeview JQuery plugin</name>
-    <description>WebJar for Bootstrap Treeview</description>
-    <url>http://jonmiles.github.io/bootstrap-treeview</url>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>1.2.0-sask</upstream.version>
-        <upstream.url>https://github.com/khaack/bootstrap-treeview/archive/1.2.0-sask.zip</upstream.url>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
-        <requirejs>
-            {
-                "paths": {
-                    "bootstrap-treeview": "bootstrap-treeview"
-                }
-            }
-        </requirejs>
-    </properties>
+	<packaging>jar</packaging>
+	<groupId>org.webjars</groupId>
+	<artifactId>bootstrap-treeview</artifactId>
+	<version>v1.2.0-sask</version>
+	<name>bootstrap-treeview</name>
+	<description>WebJar for bootstrap-treeview</description>
+	<url>http://webjars.org</url>
 
-    <developers>
-        <developer>
-            <id>jonmiles</id>
-            <name>Jonathan Miles</name>
-            <email>?</email>
-        </developer>
-        <developer>
-            <id>khaack</id>
-            <name>Kevin Haack</name>
-            <email>?</email>
-        </developer>
-    </developers>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<upstream.url>https://github.com/KHaack/bootstrap-treeview/archive/${project.version}.zip</upstream.url>
+		<destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
+		<requirejs>
+			{
+			"paths": {
+			"bootstrap-treeview": "bootstrap-treeview.js"
+			},
+			"shim": {
+			"bootstrap-treeview": ["bootstrap-treeview"]
+			}
+			}
+		</requirejs>
+	</properties>
 
-    <licenses>
-        <license>
-            <name>Apache License v 2.0</name>
-            <url>http://www.apache.org/licenses/</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+	<developers>
+		<developer>
+			<id>jonmiles</id>
+			<name>Jonathan Miles</name>
+			<email>?</email>
+		</developer>
+		<developer>
+			<id>khaack</id>
+			<name>Kevin Haack</name>
+			<email>?</email>
+		</developer>
+	</developers>
 
-    <scm>
-        <url>http://github.com/webjars/bootstrap-treeview</url>
-        <connection>scm:git:https://github.com/webjars/bootstrap-treeview.git</connection>
-        <developerConnection>scm:git:https://github.com/webjars/bootstrap-treeview.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-    
-    <dependencies>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.3.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.2.1</version>
-        </dependency>
-    </dependencies>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals><goal>run</goal></goals>
-                        <configuration>
-                            <target>
-                                <echo message="download archive"/>
-                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip"/>
-                                <echo message="unzip archive"/>
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}"/>
-                                <echo message="moving resources"/>
-                                <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}/dist" includes="*"/>
-                                    <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}/public" includes="css/*,js/*"/>
-                               </move>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+	<licenses>
+		<license>
+			<name>Apache License v 2.0</name>
+			<url>http://www.apache.org/licenses/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.1</version>
-            </plugin>
+	<scm>
+		<url>http://github.com/webjars/bootstrap-treeview</url>
+		<connection>scm:git:https://github.com/webjars/bootstrap-treeview.git</connection>
+		<developerConnection>scm:git:https://github.com/webjars/bootstrap-treeview.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.5</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>sonatype-nexus-staging</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
-        </plugins>
-        <pluginManagement>
-        	<plugins>
-        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-        		<plugin>
-        			<groupId>org.eclipse.m2e</groupId>
-        			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
-        			<configuration>
-        				<lifecycleMappingMetadata>
-        					<pluginExecutions>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									org.apache.maven.plugins
-        								</groupId>
-        								<artifactId>
-        									maven-antrun-plugin
-        								</artifactId>
-        								<versionRange>
-        									[1.7,)
-        								</versionRange>
-        								<goals>
-        									<goal>run</goal>
-        								</goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore></ignore>
-        							</action>
-        						</pluginExecution>
-        					</pluginExecutions>
-        				</lifecycleMappingMetadata>
-        			</configuration>
-        		</plugin>
-        	</plugins>
-        </pluginManagement>
-    </build>
+	<dependencies>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.jamesward</groupId>
+				<artifactId>unsnapshot-maven-plugin</artifactId>
+				<version>0.2</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>unsnapshot</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="download archive" />
+								<get src="${upstream.url}"
+									dest="${project.build.directory}/${project.artifactId}.zip" />
+								<echo message="unzip archive" />
+								<unzip src="${project.build.directory}/${project.artifactId}.zip"
+									dest="${project.build.directory}" />
+								<echo message="moving resources" />
+								<move todir="${destDir}">
+									<fileset
+										dir="${project.build.directory}/${project.artifactId}-${version.unsnapshot}" />
+								</move>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>sonatype-nexus-staging</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
