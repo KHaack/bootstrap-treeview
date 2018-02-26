@@ -12,7 +12,7 @@
 	<packaging>jar</packaging>
 	<groupId>org.webjars</groupId>
 	<artifactId>bootstrap-treeview</artifactId>
-	<version>v1.2.0-sask</version>
+	<version>1.2.0-sask</version>
 	<name>bootstrap-treeview</name>
 	<description>WebJar for bootstrap-treeview</description>
 	<url>http://webjars.org</url>
@@ -20,7 +20,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<upstream.url>https://github.com/KHaack/bootstrap-treeview/archive/${project.version}.zip</upstream.url>
-		<destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
+		<destDir>${project.build.outputDirectory}\META-INF\resources\webjars\${project.artifactId}\${project.version}</destDir>
 		<requirejs>
 			{
 			"paths": {
